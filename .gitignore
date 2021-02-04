@@ -1,0 +1,16 @@
+.vscode/
+data/*
+!data/.gitkeep
+features/
+!src/features/
+.ipynb_checkpoints/
+__pycache__/
+venv
+outputs/*
+!outputs/.gitkeep
+!outputs/run/20210124_021347
+lightning_logs
+tmp/*
+!tmp/.gitkeep
+catboost_info/
+notebooks/

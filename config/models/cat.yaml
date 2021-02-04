@@ -1,0 +1,8 @@
+models:
+  name: cat
+  params:
+    num_boost_round: 10000
+    early_stopping_rounds: 100
+    use_best_model: True
+    learning_rate: 0.03
+    eval_metric: F1

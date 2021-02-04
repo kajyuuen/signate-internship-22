@@ -1,0 +1,12 @@
+hydra:
+  run:
+    dir: ./outputs/nn/${now:%Y%m%d_%H%M%S}
+model:
+  name: bert-base-uncased
+  learning_rate: 1e-5
+trainer:
+  max_epochs: 10
+test_type: html_content # html_content or text
+logger_name: ${now:%Y%m%d_%H%M%S}
+is_test: false
+seed: 42

@@ -1,0 +1,90 @@
+hydra:
+  run:
+    dir: ./outputs/tmp/${now:%Y%m%d_%H%M%S}
+defaults:
+  - models: lgbm
+save_dir: ./outputs/lgbm/${now:%Y%m%d_%H%M%S}
+current_time: ${now:%Y%m%d_%H%M%S}
+feature_names:
+  - goal
+  - label_encode
+  - count_encode
+  - by_country
+  - by_category1
+  - by_category2
+  - html_tag_all_count
+  - bins
+  - goal_cross_duration
+  - raw_text_features
+  - remove_html_text_features
+  - diff_text_features
+  - raw_tfidf_sdv64
+  - removed_html_tags_tfidf_sdv64
+  - only_text_tfidf_sdv64
+  - aggregation_country
+  - aggregation_category1
+  - aggregation_category2
+  - aggregation_2_features
+  - aggregation_3_features
+  - bert_vec
+  - bert_svd_64_vec
+  - html_bert_vec
+  - html_bert_svd_64_vec
+  - bert_reduce_max_vec
+  - bert_cls_token_vec
+  - bert_svd_64_vec
+  - html_bert_svd_64_vec
+  - bert_reduce_max_vec
+  - bert_cls_token_vec
+  - raw_bof_nmf64
+  - aggregation_bins_duration_features
+  - aggregation_bins_goal_features
+  - aggregation_bins_duration_goal_features
+  - roberta_base_vec_from_html_content
+  - stsb_roberta_large_from_html_content
+drop_cols:
+  - index
+  - id
+  - goal
+  - html_content
+  - country
+  - category1
+  - category2
+  - bins_duration
+  - bins_goal
+category_cols:
+  - LE_country
+  - LE_category1
+  - LE_category2
+  - LE_country-category1
+  - LE_country-category2
+  - LE_category1-category2
+  - LE_country-category1-category2
+  - LE_bins_duration
+  - LE_bins_goal
+  - LE_bins_duration-bins_goal
+target_col: state
+is_test: false
+seed: 42
+seeds:
+  - 1
+  - 2
+  - 3
+models:
+  name: lgbm
+  params:
+    n_estimators: 5000
+    objective: binary
+    boosting_type: gbdt
+    importance_type: gain
+    num_leaves: 31
+    subsample: 1
+    colsample_bytree: 1
+    learning_rate: 0.01
+    n_jobs: -1
+    verbose: -1
+    random_state: 0
+    reg_lambda: 5
+  fit_params:
+    early_stopping_rounds: 500
+    verbose: 100
