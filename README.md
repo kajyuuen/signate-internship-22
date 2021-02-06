@@ -1,3 +1,7 @@
+# 【学生限定】SIGNATE 22卒インターン選考コンペティション private3位解法
+
+https://signate.jp/competitions/402/discussions
+
 ## プログラムの実行
 
 ```
